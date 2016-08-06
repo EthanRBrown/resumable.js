@@ -37,7 +37,7 @@ app.get('/download/:identifier', function(req, res){
 app.get('/resumable.js', function (req, res) {
   var fs = require('fs');
   res.setHeader("content-type", "application/javascript");
-  fs.createReadStream("../../resumable.js").pipe(res);
+  fs.createReadStream("../../../resumable.js").pipe(res);
 });
 
 app.listen(3000);
