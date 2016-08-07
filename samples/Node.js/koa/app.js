@@ -8,7 +8,7 @@ const resumablejsTempDir = path.join(__dirname, 'var', 'resumablejs');
 require('mkdirp').sync(resumablejsTempDir);
 const resumable = require('./resumable-node.js')(resumablejsTempDir);
 
-app = koa();
+const app = koa();
 
 // Host most stuff in the public folder
 app.use(require('koa-logger')());
