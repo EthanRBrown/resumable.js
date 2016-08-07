@@ -1,4 +1,4 @@
-'use const';
+'use strict';
 
 const koa = require('koa');
 const route = require('koa-route');
@@ -18,7 +18,7 @@ app.use(require('koa-better-body')());
 
 // Handle uploads through Resumable.js
 app.use(route.post('/upload', function*(){
-    yield status = new Promise((resolve, reject) => {
+    const status = yield new Promise((resolve, reject) => {
         resumable.post(this.request.fields, this.request.files, function(status, filename, original_filename, identifier){
             console.log('POST', status, original_filename, identifier);
             resolve(status);
@@ -28,7 +28,7 @@ app.use(route.post('/upload', function*(){
 
 // Handle status checks on chunks through Resumable.js
 app.use(route.get('/upload', function*(){
-    yield status = new Promise((resolve, reject) =>
+    const status = yield new Promise((resolve, reject) =>
         resumable.get(this.request, function(status, filename, original_filename, identifier){
             console.log('GET', status);
             resolve(status);
